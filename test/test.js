@@ -1,10 +1,10 @@
 var assert = require('chai').assert;
-var ogp = require('../lib/ogp.js');
+var beam = require('../lib/beam.js');
 var nock = require('nock');
 var fs = require('fs');
 
 buildUp();
-describe('ogp module', testOgp);
+describe('beam module', testbeam);
 
 function buildUp() {
   nock('http://test.com')
@@ -12,7 +12,7 @@ function buildUp() {
     .reply(500, "<html><head><head><body></body></html>");
 }
 
-function testOgp() {
+function testbeam() {
   describe('get500()', get500);
   describe('parseEmptyString()', parseEmptyString);
   describe('parseSimpleOpenGraphData', parseSimpleOpenGraphData);
@@ -20,7 +20,7 @@ function testOgp() {
 
 function get500() {
   function handleDone(done) {
-    ogp.get('http://test.com', function(err, openGraphData) {
+    beam.get('http://test.com', function(err, openGraphData) {
       assert.typeOf(openGraphData, 'object', 'It is an object');
       assert.equal(openGraphData.statusCode, 500);
       done();
@@ -31,7 +31,7 @@ function get500() {
 }
 
 function parseEmptyString() {
-  var result = ogp.parse('');
+  var result = beam.parse('');
 
   function handle() {
     assert.typeOf(result, 'object', 'it is an object');
@@ -43,7 +43,7 @@ function parseEmptyString() {
 function parseSimpleOpenGraphData() {
   function handle(done) {
     fs.readFile('./test/templates/therock.html', 'utf8', function(err, html) {
-      var result = ogp.parse(html);
+      var result = beam.parse(html);
 
       assert.equal(result.title, 'The Rock');
       assert.equal(result.type, 'video.movie');
