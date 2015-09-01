@@ -1,5 +1,5 @@
+var beam = require('../build/beam.js').Beam;
 var assert = require('chai').assert;
-var beam = require('../lib/beam.js');
 var nock = require('nock');
 var fs = require('fs');
 

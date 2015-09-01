@@ -1,2 +1,2 @@
-exports = module.exports = require('./lib/beam.js');
+exports = module.exports = require('./build/beam.js');
 exports.version = require('./package').version;
