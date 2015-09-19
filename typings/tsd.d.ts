@@ -3,7 +3,8 @@
 /// <reference path="node/node.d.ts" />
 /// <reference path="q/Q.d.ts" />
 /// <reference path="q-io/Q-io.d.ts" />
-/// <reference path="../src/OpenGraphProtocolParser.ts"/>
+/// <reference path="../src/Parsers/OpenGraphProtocolParser.ts"/>
+/// <reference path="../src/Parsers/IParser.ts"/>
 /// <reference path="../src/SourceProviders/Uri.ts"/>
 /// <reference path="../src/Check.ts"/>
 /// <reference path="../src/Beam.d.ts" />

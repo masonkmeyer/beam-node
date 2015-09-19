@@ -1,7 +1,7 @@
 /// <reference path="../typings/tsd.d.ts" />
 
 import { Uri } from './SourceProviders/Uri';
-import { OpenGraphProtocolParser }  from './OpenGraphProtocolParser';
+import { OpenGraphProtocolParser }  from './Parsers/OpenGraphProtocolParser';
 import { System } from './System';
 import { Check } from './Check';
 
@@ -15,8 +15,8 @@ export class Beam {
 	}
 
 	public static get(uri: string, callback: (err: Error, ogp: Beam.ISemanticData) => {}): void {
-		Check.IsNotNull(uri, 'URL is null');
-		Check.IsNotNull(callback, 'Callback is null');
+		Check.isNotNull(uri, 'URL is null');
+		Check.isNotNull(callback, 'Callback is null');
 
 		let ogp: Beam.ISemanticData = null;
 		let err: Error = null;

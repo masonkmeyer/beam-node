@@ -10,7 +10,21 @@ declare module Beam {
 		semanticData: ISemanticData;
 	}
 	
-	export interface ISemanticData {}
+	export interface ISemanticData {} 
 }
 
-
+declare module Beam.OpenGraphProtocol {
+	export interface Basic extends Beam.ISemanticData {
+		title: string;
+		type: string;
+		image: string;
+		url: string;
+		audio?:string;
+		description?: string;
+		determiner?: string;
+		locale?: string;
+		// TODO: locale.alternate
+		site_name?: string;
+		video: string;	
+	}
+}
