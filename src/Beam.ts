@@ -10,22 +10,22 @@ export class Beam {
 		System.noop;
 	}
 
-	public static parse(content: string): any {
+	public static parse(content: string): Beam.ISemanticData {
 		return new OpenGraphProtocolParser().parse(content);
 	}
 
-	public static get(uri: string, callback: any) {
+	public static get(uri: string, callback: (err: Error, ogp: Beam.ISemanticData) => {}): void {
 		Check.IsNotNull(uri, 'URL is null');
 		Check.IsNotNull(callback, 'Callback is null');
 
-		let ogp: any = null;
-		let err: any = null;
+		let ogp: Beam.ISemanticData = null;
+		let err: Error = null;
 
 		Beam.processUrl(uri)
 			.then((response: QioHTTP.Response) => {
 				return Beam.getOpenGraphProtocol(response);
 			})
-			.then((data: any) => {
+			.then((data: Beam.FetchResponse) => {
 				ogp = data;
 			})
 			.fail((error: Error) => {
@@ -47,7 +47,7 @@ export class Beam {
 			});
 	}
 
-	private static getOpenGraphProtocol(response: QioHTTP.Response): Q.Promise<any> {
+	private static getOpenGraphProtocol(response: QioHTTP.Response): Q.Promise<Beam.FetchResponse> {
 		let ogd = {};
 
 		return response.body.read().then((result: Buffer) => {
@@ -55,7 +55,7 @@ export class Beam {
 			return {
 				statusCode: response.status,
 				contentType: response.headers['content-type'],
-				openGraphData: data
+				semanticData: data
 			};
 		});
 	}

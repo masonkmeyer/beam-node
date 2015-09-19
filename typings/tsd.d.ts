@@ -6,3 +6,4 @@
 /// <reference path="../src/OpenGraphProtocolParser.ts"/>
 /// <reference path="../src/SourceProviders/Uri.ts"/>
 /// <reference path="../src/Check.ts"/>
+/// <reference path="../src/Beam.d.ts" />
