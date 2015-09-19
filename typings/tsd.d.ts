@@ -7,4 +7,4 @@
 /// <reference path="../src/Parsers/IParser.ts"/>
 /// <reference path="../src/SourceProviders/Uri.ts"/>
 /// <reference path="../src/Check.ts"/>
-/// <reference path="../src/Beam.d.ts" />
+/// <reference path="../src/beam.d.ts" />
