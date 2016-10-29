@@ -36,7 +36,7 @@ export class OpenGraphProtocolParser implements IParser {
             let key: string = $tag.attr('property');
             let value: string = $tag.attr('content');
 
-            if(key) {
+            if (key) {
               var objectData = this.objectify(key, value, namespace);
               _.extend(data, objectData);
             }
